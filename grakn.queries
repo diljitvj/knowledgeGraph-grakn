@@ -1,0 +1,101 @@
+Get all entities/node of a type
+
+match $x isa company; get;
+-- Return all companies in the knowledge graph
+
+match $x isa company has name "ENI"; get;
+OR
+match
+$x isa company;
+$x has name "ENI";
+get $x;
+
+-- Return all companies with name "ENI"
+
+match
+$x isa country has name "USA";
+($x, $y) isa located-in; get;
+
+-- Get all entities which has a relationship of located-in the country named USA
+
+
+match
+$x isa country has name "USA";
+(location: $x, located: $y) isa located-in; get;
+
+-- Get all entities that have a relationship of 'located-in' with country named USA and the role of the entity is located in that relationship.
+
+
+insert $x isa company has name "Grakn";
+
+-- Insert a entity of type company with name "Grakn"
+
+match
+$c isa country has name "UK";
+$g isa company has name "Grakn";
+insert
+(location: $c, located: $g) isa located-in;
+
+-- Get a country named UK which is stored in $c, Get a company named Grakn which is stored in $g, Now insert a relationship of located-in between $c and $g where $c's role is location and $g's role is located.
+
+match $r ($x) isa located-in; $x isa company has name "Grakn"; delete $r;
+
+-- Get all companies with name Graken and all the located-in relationship of that company and store in $r; Delete $r
+
+Module Review II
+1. all bonds issued by a company that owns an oil platform in the USA.
+ans: 
+match
+$count isa country has name "USA";
+$p isa oil-platform;
+(location:$count, located:$p) isa located-in;
+$comp isa company;
+(owner: $comp, owned: $p) isa owns;
+(issuer: $comp, issued: $bond) isa issues;
+get $bond;
+
+2. Add a new bond named “MyAwesomeBond” to the knowledge graph. It should be issued by at least three different companies.
+ans: 
+insert $x isa bond has name "MyAwesomeBond" has risk 0.5;
+
+match
+$b isa bond has name "MyAwesomeBond";
+$g isa company has name "ENI";
+$l isa company has name "Lukoil"
+$s isa company has name "Shell"
+insert
+(issuer: $g, issued: $b) isa issues;
+(issuer: $l, issued: $b) isa issues;
+(issuer: $s, issued: $b) isa issues;
+
+3. Delete bond inserted in 2.
+ans: 
+match 
+$b isa bond has name "MyAwesomeBond";
+$r ($c, $b) isa issues;
+delete $r;
+
+match $b isa bond has name "MyAwesomeBond";
+delete $b;
+
+4. Write a query to find the maximum risk value of a bond. Write both a compute query and an aggregate for the task.
+
+ans: 
+
+match 
+$b isa bond has risk $r;
+aggregate max $r;
+
+compute max of risk, in bond;
+
+
+Module Review III
+1. Add people owning companies to your knowledge graph, how would you modify your schema? 
+
+define 
+people sub entities
+has name
+plays owner;
+
+company sub entity
+  plays owned;

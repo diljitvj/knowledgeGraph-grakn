@@ -1,0 +1,65 @@
+define
+
+item_tag sub entity
+    has name
+    plays describes
+    plays child_tag;
+
+tag_cluster sub entity
+    has name
+    plays parent_tag
+    plays child_tag; 
+
+packing_type sub entity
+    plays pack_with
+    has cost;
+
+category sub entity
+    has name
+    plays parent_category;
+
+root_item sub entity
+    has name
+    plays object_parent
+    plays category_child;
+
+object sub entity
+    has cft
+    plays packed
+    plays item_child
+    plays described;
+
+name sub attribute datatype string;
+cft sub attribute datatype long;
+cost sub attribute datatype double;
+
+described sub role;
+describes sub role;
+packed sub role;
+pack_with sub role;
+parent_tag sub role;
+child_tag sub role;
+parent_category sub role;
+category_child sub role;
+object_parent sub role;
+item_child sub role;
+
+description sub relationship
+    relates described
+    relates describes;
+
+packs sub relationship
+    relates packed
+    relates pack_with;
+
+groups sub relationship
+    relates parent_tag
+    relates child_tag;
+
+category_group sub relationship
+    relates parent_category
+    relates category_child;
+
+item_group sub relationship
+    relates object_parent
+    relates item_child;

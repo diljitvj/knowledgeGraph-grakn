@@ -1,0 +1,6 @@
+insert $x1 isa inventory has uid "3b571434-a5f4-11e8-98d0-529269fb1459" has cft 10;
+ $x2 isa inventory has uid "68dd38c4-a5f5-11e8-98d0-529269fb1459" has cft 15;
+ $x3 isa inventory has uid "6c53a99b-fb4e-48a9-8b55-ae720385f398" has cft 20;
+ $x4 isa inventory has uid "1e804716-a176-446c-8a2e-6d47246d6777" has cft 10;
+ $x5 isa inventory has uid "d4faa2fb-2388-42eb-9f77-bf2df054a94b" has cft 20;
+ $x6 isa inventory has uid "17186f8e-97e5-49cf-b839-a21b5b4e79f1" has cft 30;

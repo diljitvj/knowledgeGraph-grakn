@@ -1,0 +1,9 @@
+insert $x1 isa tag_cluster has name "Mattress Thickness";
+$x2 isa tag_cluster has name "Mattress Size";
+$x3 isa tag_cluster has name "Sofa Size";
+$x4 isa tag_cluster has name "2 Seater Sofa";
+$x5 isa tag_cluster has name "3 Seater Sofa";
+$x6 isa tag_cluster has name "4 Seater Sofa";
+$x7 isa tag_cluster has name "5 Seater Sofa";
+$x8 isa tag_cluster has name "6 Seater Sofa";
+$x9 isa tag_cluster has name "7 Seater Sofa";

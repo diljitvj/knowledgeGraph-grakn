@@ -1,0 +1,11 @@
+match $tag_cluster isa tag_cluster has name "Mattress Thickness"; 
+$item isa item has name "Mattress";
+insert (specified: $item, specifies: $tag_cluster) isa specification;
+
+match $tag_cluster isa tag_cluster has name "Mattress Size"; 
+$item isa item has name "Mattress";
+insert (specified: $item, specifies: $tag_cluster) isa specification;
+
+match $tag_cluster isa tag_cluster has name "Sofa Size"; 
+$item isa item has name "Sofa Sets";
+insert (specified: $item, specifies: $tag_cluster) isa specification;

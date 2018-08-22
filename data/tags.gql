@@ -1,0 +1,30 @@
+insert $1 isa tag has name "Single";
+$2 isa tag has name "Double";
+$3 isa tag has name "< 4 inches";
+$4 isa tag has name "> 8 inches";
+$5 isa tag has name "4 to 8 inches";
+
+$x isa tag has name "1 Seater Sofa";
+
+$x1 isa tag has name "2 Seats";
+$x2 isa tag has name "1+1 Seats";
+
+$x3 isa tag has name "3 Seats";
+$x4 isa tag has name "2+1 Seats";
+
+$x5 isa tag has name "3+1 Seats";
+$x6 isa tag has name "2+2 Seats";
+$x7 isa tag has name "2+1+1 Seats";
+$x8 isa tag has name "4 Seats";
+
+$x9 isa tag has name "4+1 Seats";
+$x10 isa tag has name "2+2+1 Seats";
+$x11 isa tag has name "3+1+1 Seats";
+$x12 isa tag has name "3+2 Seats";
+
+$x13 isa tag has name "4+2 Seats";
+$x14 isa tag has name "4+1+1 Seats";
+$x15 isa tag has name "3+2+1 Seats";
+$x16 isa tag has name "2+2+1+1 Seats";
+
+$x17 isa tag has name "7 Seats";

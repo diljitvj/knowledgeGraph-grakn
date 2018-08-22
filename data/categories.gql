@@ -1,0 +1,2 @@
+insert $x isa category has name "Furniture";
+$y isa category has name "Electronics";

@@ -1,0 +1,35 @@
+match $tag1 isa tag has name "Single"; 
+$tag2 isa tag has name "< 4 inches"; 
+$x isa inventory has uid "3b571434-a5f4-11e8-98d0-529269fb1459";
+insert (describes: $tag1, described: $x) isa description;
+(describes: $tag2, described: $x) isa description;
+
+match $tag1 isa tag has name "Single"; 
+$tag2 isa tag has name "4 to 8 inches"; 
+$x isa inventory has uid "68dd38c4-a5f5-11e8-98d0-529269fb1459";
+insert (describes: $tag1, described: $x) isa description;
+(describes: $tag2, described: $x) isa description;
+
+match $tag1 isa tag has name "Single"; 
+$tag2 isa tag has name "> 8 inches"; 
+$x isa inventory has uid "6c53a99b-fb4e-48a9-8b55-ae720385f398";
+insert (describes: $tag1, described: $x) isa description;
+(describes: $tag2, described: $x) isa description;
+
+match $tag1 isa tag has name "Double"; 
+$tag2 isa tag has name "< 4 inches"; 
+$x isa inventory has uid "1e804716-a176-446c-8a2e-6d47246d6777";
+insert (describes: $tag1, described: $x) isa description;
+(describes: $tag2, described: $x) isa description;
+
+match $tag1 isa tag has name "Double"; 
+$tag2 isa tag has name "4 to 8 inches"; 
+$x isa inventory has uid "d4faa2fb-2388-42eb-9f77-bf2df054a94b";
+insert (describes: $tag1, described: $x) isa description;
+(describes: $tag2, described: $x) isa description;
+
+match $tag1 isa tag has name "Double"; 
+$tag2 isa tag has name "> 8 inches"; 
+$x isa inventory has uid "17186f8e-97e5-49cf-b839-a21b5b4e79f1";
+insert (describes: $tag1, described: $x) isa description;
+(describes: $tag2, described: $x) isa description;

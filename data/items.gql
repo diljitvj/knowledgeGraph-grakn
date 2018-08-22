@@ -1,0 +1,4 @@
+insert $item1 isa item has name "Mattress";
+$item2 isa item has name "Sofa Sets";
+$item3 isa item has name "Cots";
+$item4 isa item has name "Tables";

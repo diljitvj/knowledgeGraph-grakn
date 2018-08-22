@@ -99,3 +99,29 @@ plays owner;
 
 company sub entity
   plays owned;
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+-- Get all inventory of Mattress
+
+match $cat isa category has name "Furniture";
+$cat has name $catname;
+$item isa item has name "Mattress";
+$item has name $itemname;
+($item, $cat) isa category_group;
+($item, $tag_cluster) isa specification;
+$tag_cluster has name $tagclustername;
+($tag_cluster,$tag) isa tag_group;
+$tag has name $tagname;
+($tag, $inventory) isa description;
+$inventory has cft $inventorycft;
+get;
+
+-- Get all tags of an item
+
+match $item isa item has name "Sofa Sets"; 
+{($item, $tagc) isa specification;} or {($item, $tagc) isa sub_specification;};
+($tagc, $tag) isa tag_group;
+$tagc has name $tagcname;
+$tag has name $tagname;
+get;

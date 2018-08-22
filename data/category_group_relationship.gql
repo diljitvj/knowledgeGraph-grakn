@@ -1,0 +1,9 @@
+match $cat isa category has name "Furniture"; $item isa item has name "Mattress";
+insert (parent_category: $cat, in_category: $item) isa category_group;
+
+match $cat isa category has name "Furniture"; $item isa item has name "Sofa Sets";
+insert (parent_category: $cat, in_category: $item) isa category_group;
+
+match $cat isa category has name "Furniture"; $item isa item has name "Cots"; insert (parent_category: $cat, in_category: $item) isa category_group;
+
+match $cat isa category has name "Furniture"; $item isa item has name "Tables"; insert (parent_category: $cat, in_category: $item) isa category_group;

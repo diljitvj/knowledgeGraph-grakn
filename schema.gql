@@ -1,14 +1,16 @@
 define
 
-item_tag sub entity
+tag sub entity
     has name
     plays describes
-    plays child_tag;
+    plays in_tag_cluster;
 
 tag_cluster sub entity
     has name
     plays parent_tag
-    plays child_tag; 
+    plays specifies
+    plays sub_specifies
+    plays in_tag_cluster; 
 
 packing_type sub entity
     plays pack_with
@@ -18,18 +20,20 @@ category sub entity
     has name
     plays parent_category;
 
-root_item sub entity
+item sub entity
     has name
-    plays object_parent
-    plays category_child;
+    plays specified
+    plays sub_specificied
+    plays in_category;
 
-object sub entity
+inventory sub entity
+    has uid
     has cft
     plays packed
-    plays item_child
     plays described;
 
 name sub attribute datatype string;
+uid sub attribute datatype string;
 cft sub attribute datatype long;
 cost sub attribute datatype double;
 
@@ -38,11 +42,9 @@ describes sub role;
 packed sub role;
 pack_with sub role;
 parent_tag sub role;
-child_tag sub role;
+in_tag_cluster sub role;
 parent_category sub role;
-category_child sub role;
-object_parent sub role;
-item_child sub role;
+in_category sub role;
 
 description sub relationship
     relates described
@@ -52,14 +54,37 @@ packs sub relationship
     relates packed
     relates pack_with;
 
-groups sub relationship
+tag_group sub relationship
     relates parent_tag
-    relates child_tag;
+    relates in_tag_cluster;
 
 category_group sub relationship
     relates parent_category
-    relates category_child;
+    relates in_category;
 
-item_group sub relationship
-    relates object_parent
-    relates item_child;
+specification sub relationship
+    relates specifies
+    relates specified;
+
+sub_specification sub relationship
+    relates sub_specifies
+    relates sub_specificied;
+
+
+specificationOfSubTags1 sub rule 
+when {
+        (parent_tag:$p, in_tag_cluster: $c) isa tag_group; 
+        (specified: $item, $p) isa specification;
+        $c isa tag_cluster;
+    } then{
+        (sub_specifies: $c, sub_specificied: $item) isa sub_specification;
+    };
+
+specificationOfSubTags2 sub rule 
+when {
+        (parent_tag:$p, in_tag_cluster: $c) isa tag_group; 
+        (sub_specificied: $item, $p) isa sub_specification;
+        $c isa tag_cluster;
+    } then{
+        (sub_specifies: $c, sub_specificied: $item) isa sub_specification;
+    };
